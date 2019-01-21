@@ -6,7 +6,7 @@
 /*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 15:39:49 by jgabelho          #+#    #+#             */
-/*   Updated: 2019/01/20 16:25:33 by jgabelho         ###   ########.fr       */
+/*   Updated: 2019/01/20 17:21:24 by jgabelho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		main(void)
 	char	c;
 
 	i = 10;
-	c = '\0';
-	ft_printf("%s %d %cute guys\0", s, i, c);
+	c = 'd';
+	ft_printf("%s %d %%ute guys\0", s, i, c);
 	return (0);
 }
