@@ -15,12 +15,10 @@
 char	*ft_copyaword(const char *s, char c)
 {
 	char		*frsh;
-	int			i;
-	int			len;
+	int		len;
 
 	if (!s)
 		return (0);
-	i = 0;
 	len = 0;
 	while (s[len] != '\0' && s[len] != c)
 		len++;
