@@ -1,24 +1,32 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I libft/includes -Iincludes -c
-NAME = libftprintf.a
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -I libft/includes -I includes
+LFLAGS = -L libft/ -lft
+NAME = printf
 SRC = ft_printf.c
-OBJ = ft_printf.o
+OBJ = $(SRC:%.c=%.o)
 INCLUDES = printf.h
 
+.PHONY: clean fclean all re norm norme debug
+
+VPATH = src obj libft/includes includes
+
 $(NAME): $(OBJ)
-	make -C libft/
-	$(CC) -L libft/ -lft $(CLFAGS) $(SRC)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+	@make -C libft/
+	@$(CC) -o $(NAME) obj/* $(LFLAGS)
+	@echo done
 
 all: $(NAME)
 
+%.o: %.c
+	@mkdir -p obj
+	$(CC) -g $(CFLAGS) -o obj/$@ -c $<
+
 clean:
-	@make -C libft/ clean
-	@rm -f $(OBJ)
+	@rm -rf obj/
+	@make -C libft clean
 
 fclean: clean
-	@make -C libft/ fclean
 	@rm -f $(NAME)
+	@make -C libft fclean
 
-re: fclean $(NAME)
+re: fclean all
